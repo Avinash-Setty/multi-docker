@@ -9,17 +9,16 @@ script:
   - docker run react-test npm test -- --coverage
 
 after_success:
-  - docker build -t OmniAsetty/multi-client ./client
-  - docker build -t OmniAsetty/multi-nginx ./nginx
-  - docker build -t OmniAsetty/multi-server ./server
-  - docker build -t OmniAsetty/multi-worker ./worker
+  - docker build -t omniasetty/multi-client ./client
+  - docker build -t omniasetty/multi-nginx ./nginx
+  - docker build -t omniasetty/multi-server ./server
+  - docker build -t omniasetty/multi-worker ./worker
 
   #Log in to docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
   # Take those images and push them to docker hub
-  - docker push OmniAsetty/multi-client
-  - docker push OmniAsetty/multi-nginx
-  - docker push OmniAsetty/multi-server
-  - docker push OmniAsetty/multi-worker
-  
+  - docker push omniasetty/multi-client
+  - docker push omniasetty/multi-nginx
+  - docker push omniasetty/multi-server
+  - docker push omniasetty/multi-worker
